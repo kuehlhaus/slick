@@ -87,7 +87,8 @@
                 vertical: false,
                 verticalSwiping: false,
                 waitForAnimate: true,
-                zIndex: 1000
+                zIndex: 1000,
+                deepClone: true
             };
 
             _.initials = {
@@ -2304,13 +2305,13 @@
                 for (i = _.slideCount; i > (_.slideCount -
                         infiniteCount); i -= 1) {
                     slideIndex = i - 1;
-                    $(_.$slides[slideIndex]).clone(true).attr('id', '')
+                    $(_.$slides[slideIndex]).clone(_.options.deepClone).attr('id', '')
                         .attr('data-slick-index', slideIndex - _.slideCount)
                         .prependTo(_.$slideTrack).addClass('slick-cloned');
                 }
                 for (i = 0; i < infiniteCount; i += 1) {
                     slideIndex = i;
-                    $(_.$slides[slideIndex]).clone(true).attr('id', '')
+                    $(_.$slides[slideIndex]).clone(_.options.deepClone).attr('id', '')
                         .attr('data-slick-index', slideIndex + _.slideCount)
                         .appendTo(_.$slideTrack).addClass('slick-cloned');
                 }
